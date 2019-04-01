@@ -1,0 +1,851 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+* {
+	//border: 1px solid red;
+	box-sizing: border-box;
+	user-select: none;
+	-webkit-user-select: none; /* Safari 3.1+ */
+	-moz-user-select: none; /* Firefox 2+ */
+	-ms-user-select: none;
+}
+p, h1, h2, h3, h4, h5 {
+	text-align: center;
+	margin: 0;
+}
+
+
+/* Variables */
+$mainOrange: rgb(255, 129, 19);
+$mainGreen: rgb(180, 196, 0);
+$mainDarkGray: rgb(137, 137, 137);
+$mainLightGray: rgb(213, 213, 213);
+
+
+/* Extend/Inheritance */
+%displayFlex { // use @extend %displayFlex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+body {
+	margin: 0;
+	padding: 0;
+	max-width: 100vw;
+	min-height: 100vh;
+	background-color: white;
+	font-family: 'Lato', sans-serif;
+	.app {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 0 5%;
+			width: 100%;
+		.calendarHeader {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			height: 10vh;
+			margin: 5vh 0;
+			.calendarHeader__element {
+				@extend %displayFlex;
+				width: 30%;
+			}
+			.calendarHeader__element--weekProgressBar {
+				position: relative;
+				justify-content: space-evently;
+				align-items: flex-start;
+				flex-direction: column;
+				text-align: left;
+				color: $mainDarkGray;
+				width: 30%;
+				padding-left: .5%;
+				h3 {
+					position: absolute;
+					top: 0;
+					font-size: 1vw;
+				}
+				.bar {
+					position: relative;
+					width: 90%;
+					padding: .4%;
+					background-color: $mainLightGray; 
+					border-radius: 2px;
+					transition: .3s;
+				}
+				[class*='bar--week'] {
+					top: 0;
+					left: 0;
+					background-color: $mainGreen; 
+					position: absolute;
+					border-radius: 0px;
+				}
+				.bar--week1 {
+					width: 0%;
+					padding: .4% 0%;
+				}
+				.bar--week2 {
+					padding: .4% 0%;
+					width: 0%;
+				}
+				.bar--week3 {
+					width: 9.09%;
+				}
+				.bar--week4 {
+					width: 18.18%;
+				}
+				.bar--week5 {
+					width: 27.27%;
+				}
+				.bar--week6 {
+					width: 36.36%;
+				}
+				.bar--week7 {
+					width: 45.45%;
+				}
+				.bar--week8 {
+					width: 54.54%;
+				}
+				.bar--week9 {
+					width: 63.63%;
+				}
+				.bar--week10 {
+					width: 72.72%;
+				}
+				.bar--week11 {
+					width: 81.81%;
+				}
+				.bar--week12 {
+					width: 90.90%;
+				}
+				.point {
+					position: absolute;
+					padding: 1.7%;
+					transform: translateY(-50%);
+					left: 0;
+					border-radius: 50px;
+					background-color: $mainLightGray;
+					border: 2px solid $mainLightGray;
+					transition: .25s;
+					.point__number {
+						position: absolute;
+						transform: translate(-50%, 65%);
+						font-size: 1vw;
+						font-weight: bolder;
+					}
+				}
+				.point--before-week {
+					background-color: $mainGreen;
+					border: 2px solid $mainGreen;					
+				}
+				.point--current-week {
+					background-color: white;
+					border: 2px solid $mainLightGray;
+				}
+				.point--after-week {
+					background-color: $mainLightGray;
+					border: 2px solid $mainLightGray;
+				}
+				.point__week1 {
+					left: -1%;
+				}
+				.point__week2 {
+					left: 8.09%;
+				}
+				.point__week3 {
+					left: 17.18%;
+				}
+				.point__week4 {
+					left: 26.27%;
+				}
+				.point__week5 {
+					left: 35.36%;
+				}
+				.point__week6 {
+					left: 44.45%;
+				}
+				.point__week7 {
+					left: 53.54%;
+				}
+				.point__week8 {
+					left: 62.63%;
+				}
+				.point__week9 {
+					left: 71.72%;
+				}
+				.point__week10 {
+					left: 80.81%;
+				}
+				.point__week11 {
+					left: 89.90%;
+				}
+				.point__week12 {
+					left: 99%;
+				}
+			}
+			.calendarHeader__element--weekSelector {
+				justify-content: space-evently;
+				h2 {
+					width: 60%;
+					text-transform: capitalize;
+					color: $mainOrange;
+					font-size: 3.5vw;
+					margin: 0;
+				}
+				span {
+					@extend %displayFlex;
+					color: $mainDarkGray;
+					border-radius: 5px;
+					border: 1px solid $mainDarkGray;
+					height: 100%;
+					width: 10%;
+					font-size: 2.5vw;
+					transition: .2s;
+					&:hover {
+						color: $mainGreen;
+					}
+					&:active {
+						border-color: $mainLightGray;
+						transform: scale(.985);
+					}
+				}
+			}
+			.calendarHeader__element--proteinSelector {
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: flex-start;
+				h3 {
+					font-size: 1vw;
+					color: $mainDarkGray
+				}
+				.calendarHeader__proteinIcons {
+					width: 100%;
+					display: flex;
+					i {
+						@extend %displayFlex;
+						justify-content: flex-start;
+						flex: 1;
+						color: $mainLightGray;
+						font-size: 2.5vw;
+						transition: .3s;
+						&:hover {
+							color: $mainDarkGray;
+						}
+					}
+					.calendarHeader__proteinIcons--isSelected {
+						color: $mainGreen;
+						&:hover {
+							color: $mainGreen;
+						}
+					}
+				}
+			}
+		}
+		.mainCalendar {
+			height: 70vh;
+			display: flex;
+			flex-direction: row;
+			border-radius: 10px;
+			.mainCalendar__column {
+				display: flex;
+				flex: 1;
+				height: 100%;
+				flex-direction: column;
+				transition: .25s;
+				&:nth-child(2), 
+				&:nth-child(3), 
+				&:nth-child(4), 
+				&:nth-child(5), 
+				&:nth-child(6), 
+				&:nth-child(7) {
+					.mainCalendar__row {
+						overflow: hidden;
+						&:nth-child(2), &:nth-child(6) {
+							background-image: url('https://atlas-content-cdn.pixelsquid.com/stock-images/to-go-cup-paper-coffee-Xo66eK2-600.jpg');
+							background-repeat: no-repeat;
+							background-size: 100%; 
+							background-position: 0% -5%;
+							filter: grayscale(100%);
+							transition: background-position .5s; 
+							&:hover {
+								
+							}
+						}
+					}
+					&:hover {
+						border: 2px solid $mainOrange;
+						.mainCalendar__subRow, 
+						.mainCalendar__row, 
+						.mainCalendar__row--foodInfo, 
+						.mainCalendar__row--first, 
+						.mainCalendar__row--last {
+							border-left: none;
+							border-right: none;
+						}
+						.mainCalendar__row--first {
+							border-top: none;
+							flex: .46;
+						}
+						.mainCalendar__row--last {
+							border-top: none;
+							flex: .65;
+							&:last-child {
+								border-right: none;
+							}
+						}
+						.mainCalendar__row--foodInfo {
+							p {
+								color: black;
+							}
+							background-position: 0% 10%;
+							filter: grayscale(0%);
+
+							.doneIcon {
+								img {
+									filter: grayscale(0%);
+								}
+							}
+						}
+						.mainCalendar__subRow {
+							color: $mainOrange;
+							i {
+								color: $mainOrange;
+							}
+						}
+					}
+				}
+				&:last-child {
+					.mainCalendar__row--last {
+						flex-direction: row;
+						transition: .25s;
+						h2, i {
+							font-size: 1.5vw;
+							font-weight: 500;
+						}
+						i {
+							margin-right: 10%;
+						}
+						&:hover {
+							color: $mainOrange;
+						}
+					}
+				}
+				.mainCalendar__row {
+					@extend %displayFlex;
+					text-overflow: ellipsis;
+					font-size: .9vw;
+					flex: 1;
+					p, span {
+						color: $mainDarkGray;
+					}
+					border-bottom: 1px solid $mainLightGray;
+					border-right: 1px solid $mainLightGray;
+					&:nth-child(6) {
+						border-bottom: none;
+					}
+					&:nth-child(7) {
+						border-right: 1px solid $mainLightGray;
+					}
+				}
+				.mainCalendar__row--first {
+					flex: .5;
+					color: $mainGreen;
+				}
+				.mainCalendar__row--foodInfo {
+					position: relative;
+					text-align: left;
+					justify-content: flex-start;
+					align-items: flex-start;
+					p {
+						text-align: left;
+						padding: 2px;
+						font-weight: 600;
+					}
+					.doneIcon {
+						@extend %displayFlex;
+						position: absolute;
+						transition: .3s;
+						left: 70%;
+						top: 5%;
+						z-index: 2;
+						img {
+							width: 60%;
+							filter: grayscale(100%);
+						}
+					}
+					.doneIconActive {
+						opacity: 1;
+					}
+					.doneIconDeactive {
+						opacity: 0;
+					}
+				}
+				.mainCalendar__row--last {
+					font-weight: bold;
+					flex-direction: column;
+					background-color: rgb(230, 230, 230);
+					border: none;
+					flex: .7;
+					display: flex;
+					&:last-child {
+						border-right: 1px solid $mainDarkGray;
+						color: $mainDarkGray;
+					}
+					.mainCalendar__subRow {
+						@extend %displayFlex;
+						flex: 1;
+						width: 100%;
+						font-size: 1vw;
+						.carbIcons {
+							position: relative;
+							width: 100%;
+							@extend %displayFlex;
+							.check {
+								position: absolute;
+								left: 60%;
+								transition: .25s;
+								font-size: .8vw;
+							}
+							.checkActive {
+								opacity: 1;
+							}
+							.checkDeactive {
+								opacity: 0;
+							}
+							.dumbbell {
+							}
+						}
+						&:last-child {
+							border-top: 1px solid $mainDarkGray;
+						}
+						&:first-child {
+							font-weight: bolder;
+						}
+					}
+				}
+				.mainCalendar__row--weekend {
+					@extend %displayFlex;
+					flex-direction: column;
+					flex: 5.1;
+					border: none;
+					color: $mainDarkGray;
+					.content {
+						@extend %displayFlex;
+						transform: rotate(-90deg);
+						width: 160%;
+						h2, i {
+							text-transform: uppercase;
+							font-size: 1.8vw;
+							font-weight: 300;
+						}
+						i {
+							transform: rotate(90deg);
+							margin-right: 5%;
+
+						}
+					}
+				}
+				&:first-child {
+					border-top-left-radius: 10px;
+					border-bottom-left-radius: 10px;
+					.mainCalendar__row {
+						border-right: none;
+						&:first-child {
+							border-top-left-radius: 10px;
+						}
+						&:last-child {
+							border-bottom-left-radius: 10px;
+						}
+					}
+				}
+				&:last-child {
+					.mainCalendar__row {
+						border-right: none;
+						&:first-child {
+							border-top-right-radius: 10px;
+						}
+						&:last-child {
+							border-bottom-right-radius: 10px;
+						}
+					}
+				}
+			}
+			.mainCalendar__column--hours {
+				flex: .7;
+				background-color: rgb(230, 230, 230);
+				.mainCalendar__row {
+					border-bottom: 1px solid $mainDarkGray;
+					&:nth-child(1), &:nth-child(6), &:nth-child(7) {
+						border-bottom: none;
+					}
+				}
+				p {
+					font-weight: bolder;
+					margin-right: 2%;
+				}
+			}
+		}
+		.footer {
+			//min-height: 10vh;
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+			width: 100%;
+			margin: 5vh 0;
+			flex-direction: row;
+			color: $mainDarkGray;
+			.footer__section {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				flex: 1;
+				height: 100%;
+				h2 {
+					font-size: 2vw;
+					text-align: left;
+					margin-bottom: 5%;
+				}
+				p {
+					text-align: left;
+					margin-bottom: 5%;
+					font-size: 1.5vw;
+				}
+			}
+			.footer__section--buy {
+				border-right: 1px solid $mainLightGray;
+				padding: 2% 0;
+				padding-right: 4%;
+			}
+			.footer__section--mobile {
+				padding: 2% 4%;
+			}
+			.footer__section--faq {
+				border-left: 1px solid $mainLightGray;
+				padding: 2% 4%;
+			}
+			.footer__buttons {
+				width: 100%;
+				display: flex;
+			}
+			.footer__button {
+				min-width: 10%;
+				display: flex;
+				padding: .5vw 1vw;
+				font-size: .9vw;
+				border-radius: 5px;
+				border: 1px solid $mainDarkGray;
+				transition: .25s;
+				margin-right: 5%; 
+
+				&:hover {
+					background-color: $mainLightGray;
+					border-color: $mainOrange;
+					color: $mainGreen;
+					font-weight: bolder;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		.app {
+			padding: 1%;
+			.calendarHeader {
+					height: 20vh;
+					margin: 0;
+					margin-bottom: 1vh; 
+				.calendarHeader__element {
+					h3 {
+						font-size: 1.8vw;
+						flex: 1;
+					}
+
+					.calendarHeader__proteinIcons {
+						i {
+							display: flex;
+							text-align: center;
+							justify-content: center;
+							font-size: 4vw;
+						}
+					}
+				} 
+				.calendarHeader__element--weekProgressBar {
+					justify-content: center;
+					align-items: center;
+					.bar {
+						position: relative;
+					}
+					.point {
+						padding: 2.5%;
+						transform: translateY(-55%);
+						.point__number {
+							font-size: 1.5vw;
+						}
+					}
+				}
+				.calendarHeader__element--weekSelector {
+					h2, span {
+						flex: 1;
+						margin: 0 4%;
+					}
+					span {
+						height: 70%;
+						border-radius: 20px;
+						font-size: 1.5em;
+					}
+				}
+			}
+			.mainCalendar {
+				height: 70vh;
+				.mainCalendar__column {
+					.mainCalendar__row {
+						font-size: 1.3vw;
+						&:nth-child(5) {
+							font-size: 1.23vw;
+						}
+					}
+				}
+			}
+			.footer {
+				justify-content: center;
+				align-items: center;
+				margin: 1vh 0;
+				.footer__section {
+					justify-content: center;
+					align-items: center;
+					h2 {
+						font-size: 1.9vw;
+						text-align: center
+					}
+					p {
+						text-align: center;
+						font-size: 1.8vw;
+					}
+				}
+				.footer__section--buy, .footer__section--mobile, .footer__section--faq {
+					padding: 1%;
+					height: 100%;
+				}
+				.footer__buttons {
+					justify-content: center;
+				}
+				.footer__button {
+					display: flex;
+					justify-content: center;
+					align-items: space-between;
+					flex: 1;
+					text-align: center;
+					padding: 1%;
+					font-size: 1.5vw;
+					&:last-child {
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+	body {
+		.app {
+			padding: 1%;
+			.calendarHeader {
+					height: 30vh;
+					margin: 0;
+					margin-bottom: 1vh; 
+					flex-direction: column;
+					width: 100%;
+				.calendarHeader__element {
+					flex: 1;
+					width: 100%;
+					position: relative;
+					h3 {
+						font-size: 1.8vw;
+						flex: 1;
+					}
+					.calendarHeader__proteinIcons {
+						i {
+							display: flex;
+							text-align: center;
+							justify-content: center;
+							font-size: 4vw;
+						}
+					}
+				}
+				.calendarHeader__element--proteinSelector {
+					flex: 1;
+					width: 100%;
+					justify-content: center;
+					align-items: center;
+				} 
+				.calendarHeader__element--weekProgressBar {
+					flex: 1;
+					width: 100%;
+					position: relative;
+					justify-content: center;
+					align-items: center;
+					padding-left: 0;
+					h3 {
+						font-size: 5vw;
+						margin-bottom: 100%;
+					}
+					.bar {
+						position: relative;
+						transform: translateY(60%);
+						padding: .2vw 0;
+					}
+					[class*='bar--week'] {
+						padding: .6vw 0;
+						transform: translateY(-10%);
+					}
+					.point {
+						padding: 2.5%;
+						transform: translateY(-60%) translateX(-50%);
+
+						.point__number {
+							font-size: 3.5vw;
+							transform: translate(-50%, 80%);
+						}
+					}
+				}
+				.calendarHeader__element--weekSelector {
+					position: relative;
+					h2, span {
+						margin: 0 4%;
+					}
+					h2 {
+						font-size: 8vw;
+						flex: 1;
+					}
+					span {
+						flex: .5;
+						height: 70%;
+						border-radius: 20px;
+						font-size: 1.5em;
+					}
+				}
+				.calendarHeader__element--proteinSelector {
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					h3 {
+						font-size: 4vw;
+						color: $mainDarkGray;
+						display: flex;
+						flex: 1;
+					}
+					.calendarHeader__proteinIcons {
+						width: 100%;
+						display: flex;
+						flex: 3;
+						i {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							flex: 1;
+							color: $mainLightGray;
+							font-size: 8vw;
+							transition: .3s;
+							&:hover {
+								color: $mainDarkGray;
+							}
+						}
+						.calendarHeader__proteinIcons--isSelected {
+							color: $mainGreen;
+							&:hover {
+								color: $mainGreen;
+							}
+						}
+					}
+				}
+			}
+			.mainCalendar {
+				height: 65vh;
+				.mainCalendar__column {
+					.mainCalendar__row {
+							text-align: center;
+							justify-content: center;
+							align-items: center;
+							font-size: 2vw;
+							flex-direction: column;
+						p, h2, h3 {
+							text-align: center;
+						}
+					}
+					.mainCalendar__row--foodInfo {
+						text-align: center;
+						justify-content: center;
+						align-items: center;
+						font-size: 2vw;
+						p, h2, h3 {
+							text-align: center;
+						}
+					}
+					.mainCalendar__row--weekend {
+						.content {
+							display: flex;
+							width: 500%;
+							i, h2 {
+								font-size: 5vw;
+							}
+						}
+					}
+					.mainCalendar__row--last {
+					.mainCalendar__subRow {
+						font-size: 1.8vw;
+						}
+					}
+				}
+				.mainCalendar__column--last {
+					.mainCalendar__row--last {
+						h2, i {
+							font-size: 4vw;
+						}			
+					}
+				}
+			}
+			.footer {
+				justify-content: center;
+				align-items: center;
+				margin: 1vh 0;
+				.footer__section {
+					justify-content: center;
+					align-items: center;
+					h2 {
+						font-size: 1.9vw;
+						text-align: center
+					}
+					p {
+						text-align: center;
+						font-size: 1.8vw;
+					}
+				}
+				.footer__section--buy, .footer__section--mobile, .footer__section--faq {
+					padding: 1%;
+					height: 100%;
+				}
+				.footer__buttons {
+					justify-content: center;
+				}
+				.footer__button {
+					display: flex;
+					justify-content: center;
+					align-items: space-between;
+					flex: 1;
+					text-align: center;
+					padding: 1%;
+					font-size: 1.5vw;
+					&:last-child {
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
